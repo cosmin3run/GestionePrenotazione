@@ -25,4 +25,10 @@ public class Building {
 
     @OneToMany(mappedBy = "building", cascade = CascadeType.REMOVE)
     private List<Station> stations;
+
+    public Building(String name, String address, String city) {
+        this.name = name;
+        this.address = address;
+        this.city = city;
+    }
 }
