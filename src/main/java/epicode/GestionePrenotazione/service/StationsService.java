@@ -16,6 +16,7 @@ public class StationsService {
     private StationsDAO stationsDAO;
 
     public void saveStation(Station newStation){
+
         stationsDAO.save(newStation);
         log.info("Station saved");
     }

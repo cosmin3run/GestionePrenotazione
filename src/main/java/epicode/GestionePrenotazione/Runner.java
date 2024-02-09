@@ -35,6 +35,66 @@ public class Runner implements CommandLineRunner {
     public void run(String... args) throws Exception {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(GestionePrenotazioneApplication.class);
         Faker faker = new Faker();
+
+        //SAVING USERS
+        User user1 = (User) ctx.getBean("user1");
+        usersService.saveUser(user1);
+        User user2 = (User) ctx.getBean("user2");
+        usersService.saveUser(user2);
+        User user3 = (User) ctx.getBean("user3");
+        usersService.saveUser(user3);
+        //SAVING BUILDINGS
+        Building building1 = (Building) ctx.getBean("building1");
+        buildingsService.saveBuilding(building1);
+        Building building2 = (Building) ctx.getBean("building2");
+        buildingsService.saveBuilding(building2);
+        Building building3 = (Building) ctx.getBean("building3");
+        buildingsService.saveBuilding(building3);
+        //SAVING STATIONS
+        Station station1 = (Station) ctx.getBean("station1");
+        stationsService.saveStation(station1);
+        Station station2 = (Station) ctx.getBean("station2");
+        stationsService.saveStation(station2);
+        Station station3 = (Station) ctx.getBean("station3");
+        stationsService.saveStation(station3);
+        Station station4 = (Station) ctx.getBean("station4");
+        stationsService.saveStation(station4);
+        //MAKING RESERVATIONS
+
+
+
+        Reservation reservation1 = new Reservation(user1, LocalDate.now().plusMonths(1), station1);
+        reservationsService.saveReservation(reservation1);
+
+        Reservation reservation2 = new Reservation(user2, LocalDate.now().plusMonths(1), station2);
+        reservationsService.saveReservation(reservation2);
+
+        Reservation reservation3 = new Reservation(user2, LocalDate.now().plusMonths(3), station3);
+        reservationsService.saveReservation(reservation3);
+
+        Reservation reservation4 = new Reservation(user1, LocalDate.now().plusMonths(4), station4);
+        reservationsService.saveReservation(reservation4);
+
+        Reservation reservation5 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(2), station1);
+        reservationsService.saveReservation(reservation5);
+
+        Reservation reservation6 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(4), station2);
+        reservationsService.saveReservation(reservation6);
+
+        Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
+        reservationsService.saveReservation(reservation7);
+
+        //  Save reservation in used station and day
+//        Reservation reservation8 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
+//        reservationsService.saveReservation(reservation8);
+
+
+        ctx.close();
+
+
+
+        //bin
+
         //Save User
 //        User user1 = new User(faker.name().username(), faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress());
 //        User user2 = new User(faker.name().username(), faker.name().firstName(),faker.name().lastName(),faker.internet().emailAddress());
@@ -74,62 +134,6 @@ public class Runner implements CommandLineRunner {
 //        reservationsService.saveReservation(reservation5);
 //        reservationsService.saveReservation(reservation6);
 //        reservationsService.saveReservation(reservation7);
-
-        //SAVING USERS
-        User user1 = (User) ctx.getBean("user1");
-        usersService.saveUser(user1);
-        User user2 = (User) ctx.getBean("user2");
-        usersService.saveUser(user2);
-        User user3 = (User) ctx.getBean("user3");
-        usersService.saveUser(user3);
-        //SAVING BUILDINGS
-        Building building1 = (Building) ctx.getBean("building1");
-        buildingsService.saveBuilding(building1);
-        Building building2 = (Building) ctx.getBean("building2");
-        buildingsService.saveBuilding(building2);
-        Building building3 = (Building) ctx.getBean("building3");
-        buildingsService.saveBuilding(building3);
-        //SAVING STATIONS
-        Station station1 = (Station) ctx.getBean("station1");
-        stationsService.saveStation(station1);
-        Station station2 = (Station) ctx.getBean("station2");
-        stationsService.saveStation(station2);
-        Station station3 = (Station) ctx.getBean("station3");
-        stationsService.saveStation(station3);
-        Station station4 = (Station) ctx.getBean("station4");
-        stationsService.saveStation(station4);
-        //MAKING RESERVATIONS
-
-
-
-        Reservation reservation1 = new Reservation(user1, LocalDate.now().plusMonths(1), station1);
-
-        reservationsService.saveReservation(reservation1);
-
-        Reservation reservation2 = new Reservation(user2, LocalDate.now().plusMonths(1), station2);
-        reservationsService.saveReservation(reservation2);
-
-        Reservation reservation3 = new Reservation(user2, LocalDate.now().plusMonths(3), station3);
-        reservationsService.saveReservation(reservation3);
-
-        Reservation reservation4 = new Reservation(user1, LocalDate.now().plusMonths(4), station4);
-        reservationsService.saveReservation(reservation4);
-
-        Reservation reservation5 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(2), station1);
-        reservationsService.saveReservation(reservation5);
-
-        Reservation reservation6 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(4), station2);
-        reservationsService.saveReservation(reservation6);
-
-        Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
-        reservationsService.saveReservation(reservation7);
-
-        //  Save reservation in used station and day
-//        Reservation reservation8 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
-//        reservationsService.saveReservation(reservation8);
-
-        //
-
     }
 
 
