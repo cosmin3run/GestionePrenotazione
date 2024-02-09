@@ -92,11 +92,11 @@ public class Runner implements CommandLineRunner {
         //SAVING STATIONS
         Station station1 = (Station) ctx.getBean("station1");
         stationsService.saveStation(station1);
-        Station station2 = (Station) ctx.getBean("station1");
+        Station station2 = (Station) ctx.getBean("station2");
         stationsService.saveStation(station2);
-        Station station3 = (Station) ctx.getBean("station1");
+        Station station3 = (Station) ctx.getBean("station3");
         stationsService.saveStation(station3);
-        Station station4 = (Station) ctx.getBean("station1");
+        Station station4 = (Station) ctx.getBean("station4");
         stationsService.saveStation(station4);
         //MAKING RESERVATIONS
 
@@ -115,16 +115,16 @@ public class Runner implements CommandLineRunner {
         Reservation reservation4 = new Reservation(user1, LocalDate.now().plusMonths(4), station4);
         reservationsService.saveReservation(reservation4);
 
-//        Reservation reservation5 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(2), station1);
-//        reservationsService.saveReservation(reservation5);
-//
-//        Reservation reservation6 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(4), station2);
-//        reservationsService.saveReservation(reservation6);
-//
-//        Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
-//        reservationsService.saveReservation(reservation7);
+        Reservation reservation5 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(2), station1);
+        reservationsService.saveReservation(reservation5);
 
-        //Save reservation in used station and day
+        Reservation reservation6 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(4), station2);
+        reservationsService.saveReservation(reservation6);
+
+        Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
+        reservationsService.saveReservation(reservation7);
+
+        //  Save reservation in used station and day
 //        Reservation reservation8 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
 //        reservationsService.saveReservation(reservation8);
 
