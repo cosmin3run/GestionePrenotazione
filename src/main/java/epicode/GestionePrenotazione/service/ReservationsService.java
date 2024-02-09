@@ -2,6 +2,7 @@ package epicode.GestionePrenotazione.service;
 
 import epicode.GestionePrenotazione.DAO.ReservationsDAO;
 import epicode.GestionePrenotazione.entities.Reservation;
+import epicode.GestionePrenotazione.entities.Station;
 import epicode.GestionePrenotazione.exceptions.ItemNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +17,11 @@ public class ReservationsService {
     @Autowired
     private ReservationsDAO reservationsDAO;
 
-    public void saveReservation(Reservation newReservation){
-        reservationsDAO.save(newReservation);
-        log.info("Reservation booked");
+    public void saveReservation(Reservation newReservation) {
+
+            reservationsDAO.save(newReservation);
+            log.info("Reservation booked");
+
     }
 
     public Reservation findById(int reservationId) throws ItemNotFoundException{
@@ -37,4 +40,8 @@ public class ReservationsService {
         reservationsDAO.delete(found);
         log.info("This reservation has been deleted.");
     }
+
+    public long countByStationAndReservationDate(Station station, LocalDate reservationDate){
+        return reservationsDAO.countByStationAndReservationDate(station, reservationDate);
+    };
 }
