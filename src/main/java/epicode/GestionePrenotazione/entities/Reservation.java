@@ -1,11 +1,7 @@
 package epicode.GestionePrenotazione.entities;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.OneToMany;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -13,12 +9,30 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @ToString
-
+@Entity
+@Table(name = "reservations")
 public class Reservation {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Setter(AccessLevel.NONE)
     private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
+
     private LocalDate startReservation;
     private LocalDate endReservation;
 
+    @ManyToOne
+    @JoinColumn(name = "station_id")
     private Station station;
+
+    //CONSTRUCTOR
+
+    public Reservation(User user, LocalDate startReservation, Station station) {
+        this.user = user;
+        this.startReservation = startReservation;
+        this.station = station;
+    }
 }

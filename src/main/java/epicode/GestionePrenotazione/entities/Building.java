@@ -1,12 +1,8 @@
 package epicode.GestionePrenotazione.entities;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.util.List;
 
@@ -19,10 +15,14 @@ import java.util.List;
 @Table(name = "buildings")
 
 public class Building {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Setter(AccessLevel.NONE)
     private int id;
     private String name;
     private String address;
     private String city;
+
+    @OneToMany(mappedBy = "building", cascade = CascadeType.REMOVE)
     private List<Station> stations;
 }
