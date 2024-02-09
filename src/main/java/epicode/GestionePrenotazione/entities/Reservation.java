@@ -33,6 +33,7 @@ public class Reservation {
     public Reservation(User user, LocalDate startReservation, Station station) {
         this.user = user;
         this.startReservation = startReservation;
+        this.endReservation = startReservation.plusDays(1);
         this.station = station;
     }
 }

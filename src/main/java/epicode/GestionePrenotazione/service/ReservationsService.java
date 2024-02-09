@@ -19,7 +19,7 @@ public class ReservationsService {
 
     public void saveReservation(Reservation newReservation) {
     if (this.existsByStationAndStartReservation(newReservation.getStation(), newReservation.getStartReservation())){
-        throw new RuntimeException("This specific Station is already booked for this date");
+        throw new RuntimeException("This specific Station with id: '"+ newReservation.getStation().getId() +"' is already booked for this date");
     }else {
             reservationsDAO.save(newReservation);
             log.info("Reservation booked");}

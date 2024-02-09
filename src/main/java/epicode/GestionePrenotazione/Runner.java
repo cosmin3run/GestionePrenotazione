@@ -109,20 +109,20 @@ public class Runner implements CommandLineRunner {
         Reservation reservation2 = new Reservation(user2, LocalDate.now().plusMonths(1), station2);
         reservationsService.saveReservation(reservation2);
 
-        Reservation reservation3 = new Reservation(user2, LocalDate.now().plusMonths(1), station3);
+        Reservation reservation3 = new Reservation(user2, LocalDate.now().plusMonths(3), station3);
         reservationsService.saveReservation(reservation3);
 
-        Reservation reservation4 = new Reservation(user1, LocalDate.now().plusMonths(1), station4);
+        Reservation reservation4 = new Reservation(user1, LocalDate.now().plusMonths(4), station4);
         reservationsService.saveReservation(reservation4);
 
-        Reservation reservation5 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(2), station1);
-        reservationsService.saveReservation(reservation5);
-
-        Reservation reservation6 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(1), station2);
-        reservationsService.saveReservation(reservation6);
-
-        Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
-        reservationsService.saveReservation(reservation7);
+//        Reservation reservation5 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(2), station1);
+//        reservationsService.saveReservation(reservation5);
+//
+//        Reservation reservation6 = new Reservation(user3, LocalDate.now().plusMonths(1).plusDays(4), station2);
+//        reservationsService.saveReservation(reservation6);
+//
+//        Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
+//        reservationsService.saveReservation(reservation7);
 
         //Save reservation in used station and day
 //        Reservation reservation8 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
