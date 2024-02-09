@@ -4,6 +4,8 @@ import epicode.GestionePrenotazione.enums.StationType;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Setter
 @Getter
 @ToString
@@ -24,6 +26,9 @@ public class Station {
     @ManyToOne
     @JoinColumn(name = "building_id")
     private Building building;
+
+    @OneToMany(mappedBy = "station")
+    private List<Reservation> reservations;
 
     //CONSTRUCTOR
 
