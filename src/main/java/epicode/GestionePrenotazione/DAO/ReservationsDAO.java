@@ -10,6 +10,6 @@ import java.time.LocalDate;
 
 @Repository
 public interface ReservationsDAO extends JpaRepository<Reservation, Integer> {
-    long countByStationAndReservationDate(Station station, LocalDate reservationDate);
+    boolean existsByStationAndStartReservation(Station station, LocalDate startReservation);
 
 }

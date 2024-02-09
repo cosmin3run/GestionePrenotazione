@@ -18,9 +18,11 @@ public class ReservationsService {
     private ReservationsDAO reservationsDAO;
 
     public void saveReservation(Reservation newReservation) {
-
+    if (this.existsByStationAndStartReservation(newReservation.getStation(), newReservation.getStartReservation())){
+        throw new RuntimeException("This specific Station is already booked for this date");
+    }else {
             reservationsDAO.save(newReservation);
-            log.info("Reservation booked");
+            log.info("Reservation booked");}
 
     }
 
@@ -41,7 +43,7 @@ public class ReservationsService {
         log.info("This reservation has been deleted.");
     }
 
-    public long countByStationAndReservationDate(Station station, LocalDate reservationDate){
-        return reservationsDAO.countByStationAndReservationDate(station, reservationDate);
+    public boolean existsByStationAndStartReservation(Station station, LocalDate reservationDate){
+        return reservationsDAO.existsByStationAndStartReservation(station, reservationDate);
     };
 }

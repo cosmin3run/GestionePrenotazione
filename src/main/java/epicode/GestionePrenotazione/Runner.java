@@ -124,6 +124,9 @@ public class Runner implements CommandLineRunner {
         Reservation reservation7 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
         reservationsService.saveReservation(reservation7);
 
+        //Save reservation in used station and day
+        Reservation reservation8 = new Reservation(user1, LocalDate.now().plusMonths(1).plusDays(2), station3);
+        reservationsService.saveReservation(reservation8);
         //
 
     }
